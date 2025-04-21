@@ -3,7 +3,6 @@ import torch
 import torch.nn as nn
 import myllm.attention as att
 import myllm.layers as layers
-import myllm.gpt as transformer
 
 # ChatGPT 2 model parameteres
 GPT_CONFIG_124M = {
@@ -101,4 +100,15 @@ class GPTModel(nn.Module):
             GPT_CONFIG["n_heads"] = 25
 
         return GPT_CONFIG
+
+    def generate_text_simple(model, idx, max_new_tokens, content_size):
+        for _ in range(max_new_tokens):
+            idx_cond = idx[:, -content_size:]
+            with torch.no_grad():
+                logits = model(idx_cond)
+                logits = logits[:, -1, :]
+                probas = torch.softmax(logits, dim=-1)
+                idx_next = torch.argmax(probas, dim=-1, keepdim=True)
+                idx = torch.cat((idx, idx_next), dim=1)
+        return idx
     
