@@ -20,6 +20,7 @@ GPT_CONFIG_124M = {
 
 
 class TransformerBlock(nn.Module):
+ 
     def __init__(self, cfg):
         super().__init__()
         self.att = att.MultiHeadAttention(
@@ -53,7 +54,7 @@ class TransformerBlock(nn.Module):
 
 
 class GPTModel(nn.Module):
-    def __init__(self, cfg):
+    def __init__(self, cfg=GPT_CONFIG_124M):
         super().__init__()
         # define embeddings 
         self.tok_emb = nn.Embedding(cfg["vocab_size"], cfg["emb_dim"])
