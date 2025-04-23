@@ -2,7 +2,7 @@ import torch
 import myllm.gpt as gpt
 
 
-def modelConfig(name="gpt2-small"):
+def gpt_config(name="gpt2-small"):
     GPT_CONFIG = gpt.GPT_CONFIG_124M.copy()
     GPT_CONFIG["name"] = name
     if name =="gpt2-medium":
