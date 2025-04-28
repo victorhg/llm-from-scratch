@@ -17,6 +17,8 @@ My journey learning how Transformers working to build a Large Language Model. De
 - Train a neural network model using the Transformer Architecture 
 - Load a Model and execute the Text Generation Process using the class `GPTModel` 
 - Use the GPT2 open weights to load the models in our own architecture
+- Alter the Transformer Architecture, allowing for Fine tuning of a pre trained model
+- Create a SpamClassifier that's capable of evaluate a message to say if it's spam or not
 
 
 
