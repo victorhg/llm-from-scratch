@@ -123,12 +123,12 @@ def load_openai_weights_into_gpt(gpt, params):           #1
 def calc_loss_batch(input_batch, target_batch, model, device):
     input_batch = input_batch.to(device)
     target_batch = target_batch.to(device)
-    #logits = model(input_batch)
-    #loss = torch.nn.functional.cross_entropy(
-    #    logits.flatten(0,1), target_batch.flatten()
-    #)
-    logits = model(input_batch)[:, -1, :]
-    loss = torch.nn.functional.cross_entropy(logits, target_batch)
+    logits = model(input_batch)
+    loss = torch.nn.functional.cross_entropy(
+        logits.flatten(0,1), target_batch.flatten()
+    )
+    #logits = model(input_batch)[:, -1, :]
+    #loss = torch.nn.functional.cross_entropy(logits, target_batch)
     
     return loss
 
