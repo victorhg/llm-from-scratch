@@ -12,6 +12,7 @@ GPT_CONFIG_124M = {
         "emb_dim": 768, 
         "n_heads": 12, 
         "n_layers": 12, 
+        "drop_rate": 0,
         "drop_shortcut": 0.1, 
         "drop_embedding": 0.1,
         "drop_attention": 0.1,
@@ -105,7 +106,8 @@ class GPTModel(nn.Module):
             else:
                 idx_next = torch.argmax(logits, dim=-1, keepdim=True)
             
-            if idx_next == eos_id: break
+            if idx_next == eos_id: 
+                break
 
             idx = torch.cat((idx, idx_next), dim=1)
         return idx

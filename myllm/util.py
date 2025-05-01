@@ -10,7 +10,6 @@ def gpt_config(name="gpt2-small"):
         GPT_CONFIG["emb_dim"] = 1024
         GPT_CONFIG["n_layers"] = 24 
         GPT_CONFIG["n_heads"] = 16
-            
     elif name == "gpt2-large":
         GPT_CONFIG["emb_dim"] = 1280
         GPT_CONFIG["n_layers"] = 36

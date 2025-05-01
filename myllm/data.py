@@ -171,7 +171,6 @@ class InstructionDataset(Dataset):
 def custom_instruction_collate_fn(batch, pad_token_id=PAD_TOKEN_ID, 
                       ignore_index=-100, allowed_max_length=None, device="cpu"):
     batch_max_length = max(len(item) + 1 for item in batch)
-
     inputs_lst, target_lst = [], []
     for item in batch:
         new_item = item.copy()
@@ -197,9 +196,9 @@ def custom_instruction_collate_fn(batch, pad_token_id=PAD_TOKEN_ID,
         target_lst.append(targets)
     
     inputs_tensor = torch.stack(inputs_lst).to(device)
-    target_tensor = torch.stack(target_lst).to(device)
+    targets_tensor = torch.stack(target_lst).to(device)
     
-    return inputs_tensor, target_tensor
+    return inputs_tensor, targets_tensor
 
 def split_instruction_data(file_path):
     with open(file_path, "r") as file:
@@ -208,8 +207,7 @@ def split_instruction_data(file_path):
     # Set splits for training
     train_portion = int(len(data) * 0.85)
     test_portion = int(len(data) * 0.1)
-    val_portion = len(data) - train_portion - test_portion
-
+    
     train_data = data[:train_portion]
     test_data = data[train_portion:train_portion + test_portion]
     val_data = data[train_portion + test_portion:]
@@ -239,8 +237,8 @@ def create_instruction_data_loaders(train_data, val_data, test_data,
         val_dataset,
         batch_size=batch_size,
         collate_fn=customized_collate_fn,
-        shuffle=True,
-        drop_last=True,
+        shuffle=False,
+        drop_last=False,
         num_workers=num_workers 
     )
 
@@ -250,8 +248,8 @@ def create_instruction_data_loaders(train_data, val_data, test_data,
         test_dataset,
         batch_size=batch_size,
         collate_fn=customized_collate_fn,
-        shuffle=True,
-        drop_last=True,
+        shuffle=False,
+        drop_last=False,
         num_workers=num_workers 
     )
     return train_loader, val_loader, test_loader
