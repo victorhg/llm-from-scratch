@@ -85,12 +85,12 @@ class GPTModel(nn.Module):
         return logits
 
     def generate(self, idx, max_new_tokens, context_size,
-             temperature=0.0, top_k=None, eos_id=None):
+             temperature=0.0, top_k=None, eos_id=None, device="cpu"):
 
         for _ in range(max_new_tokens):
             idx_cond = idx[:, -context_size:]
             with torch.no_grad():
-                logits = self(idx_cond)
+                logits = self(idx_cond).to(device)
             logits = logits[:, -1, :]
             if top_k is not None:  
                 top_logits, _ = torch.topk(logits, top_k)
