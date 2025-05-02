@@ -29,6 +29,6 @@ My journey learning how Transformers working to build a Large Language Model. De
 
 You can also refer to my notes, taken using obsidian during the process (not curated - just brain dump from my sessions):
 
-- [LLM from Scratch - notes]("LLM from Scratch.pdf")
+- [LLM from Scratch - notes](LLM%20from%20Scratch.pdf)
 
 
