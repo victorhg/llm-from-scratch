@@ -6,6 +6,7 @@ Can I create a Large Language Model from scratch?
 - Video Reference: [Build an LLM from scratch](https://www.youtube.com/watch?v=kPGTx4wcm_w)
 
 
+
 ## What to Learn Here so far
 
 My journey learning how Transformers working to build a Large Language Model. Describing the process backwards
@@ -26,5 +27,8 @@ My journey learning how Transformers working to build a Large Language Model. De
 🔥🔥🔥 That's a wrap! 
 
 
+You can also refer to my notes, taken using obsidian during the process (not curated - just brain dump from my sessions):
+
+- [LLM from Scratch - notes]("LLM from Scratch.pdf")
 
 
