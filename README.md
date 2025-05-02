@@ -19,6 +19,11 @@ My journey learning how Transformers working to build a Large Language Model. De
 - Use the GPT2 open weights to load the models in our own architecture
 - Alter the Transformer Architecture, allowing for Fine tuning of a pre trained model
 - Create a SpamClassifier that's capable of evaluate a message to say if it's spam or not
+- Create a Instructions Dataset and Dataloader to finetune another model
+- Accessing local ollama instance for testing
+- Evaluate the results of my model using ollama
+
+🔥🔥🔥 That's a wrap! 
 
 
 
